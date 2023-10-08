@@ -9,7 +9,7 @@ import {
   makeStyles,
   Text,
 } from "@rneui/themed";
-import { View, Platform } from "react-native";
+import { View, Platform, DimensionValue } from "react-native";
 import { Header } from "@rneui/base";
 
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
@@ -126,7 +126,9 @@ const App = () => {
           </Container>
         )}
         {interpolateResult && (
-          <Container>
+          <Container
+            props={{ flexBasis: 400, rowGap: 20, justifyContent: "center" }}
+          >
             <Button
               onPress={() => setViewObject(interpolateResult.privKey)}
               title={"Private key"}
@@ -146,20 +148,37 @@ const App = () => {
     </ThemeProvider>
   );
 };
-type Props = {};
+type Props = {
+  width?: DimensionValue;
+  height?: DimensionValue;
+  backgroundColor?: string;
+  flexBasis?: DimensionValue;
+  justifyContent?: "flex-start" | "flex-end" | "center" | "space-between";
+  columnGap?: number;
+  rowGap?: number;
+};
 
-const useStyles = makeStyles((styleTheme, _props: Props) => ({
+const useStyles = makeStyles((styleTheme, props: Props) => ({
   container: {
-    flex: 1,
+    flexBasis: props.flexBasis ? props.flexBasis : "auto",
+    columnGap: props.columnGap ? props.columnGap : 0,
+    rowGap: props.rowGap ? props.rowGap : 0,
     padding: 25,
     paddingTop: 50,
-    justifyContent: "space-around",
-    backgroundColor: styleTheme.colors.background,
+    backgroundColor: props.backgroundColor
+      ? props.backgroundColor
+      : styleTheme.colors.background,
+    justifyContent: props.justifyContent ? props.justifyContent : "flex-start",
+    width: props.width ? props.width : "100%",
+    height: props.height ? props.height : "100%",
   },
 }));
 
-const Container = ({ children }: PropsWithChildren<{}>) => {
-  const styles = useStyles();
+const Container = ({
+  children,
+  props,
+}: PropsWithChildren<{ props?: Props }>) => {
+  const styles = useStyles(props);
   return <View style={styles.container}>{children}</View>;
 };
 
