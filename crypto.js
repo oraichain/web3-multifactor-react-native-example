@@ -48,7 +48,7 @@ Object.assign(
   require("diffie-hellman"),
   require("browserify-sign"),
   require("public-encrypt"),
-  require("randomfill"),
+  require("randomfill")
 );
 
 // implement window crypto

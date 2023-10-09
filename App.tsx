@@ -15,15 +15,14 @@ import { Header } from "@rneui/base";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { OnlySocialLoginKey as onlySocialKey } from "./tkey";
 
-import * as buffer from "buffer";
+// import * as buffer from "buffer";
 import WebView from "react-native-webview";
 import html from "./asset/interpolate.html";
 
-if (typeof Buffer === "undefined") {
-  console.log(buffer.Buffer);
-  global.Buffer = buffer.Buffer;
-}
-global.window.addEventListener = (x) => x;
+// if (typeof Buffer === "undefined") {
+//   global.Buffer = buffer.Buffer;
+// }
+// global.window.addEventListener = (x) => x;
 
 GoogleSignin.configure({
   iosClientId: process.env.IOS_CLIENT_ID,
@@ -56,13 +55,13 @@ const App = () => {
         onlySocialKey.serviceProvider as any
       ).triggerLoginMobile({
         typeOfLogin: "google",
-        verifier: "ios-google",
+        verifier: "ios-google-7",
         clientId: process.env.IOS_CLIENT_ID,
         idToken: userInfoData.idToken,
       });
       setLoginResponse({ shares, sharesIndexes, userInfo, thresholdPublicKey });
     } catch (error: any) {
-      console.log({ error });
+      console.log(error.message);
       console.log("LoginError");
     }
   };
@@ -95,15 +94,15 @@ const App = () => {
                 javaScriptEnabled={true}
                 injectedJavaScript={`
           window.shares = '${JSON.stringify(
-            loginResponse.shares
-              .slice(0, 3)
-              .map((share: any) => share.toString("hex"))
-          )}';
+                  loginResponse.shares
+                    .slice(0, 3)
+                    .map((share: any) => share.toString("hex"))
+                )}';
           window.indexes = '${JSON.stringify(
-            loginResponse.sharesIndexes
-              .slice(0, 3)
-              .map((index: any) => index.toString("hex"))
-          )}';
+                  loginResponse.sharesIndexes
+                    .slice(0, 3)
+                    .map((index: any) => index.toString("hex"))
+                )}';
         `}
                 onMessage={async (event) => {
                   console.log(

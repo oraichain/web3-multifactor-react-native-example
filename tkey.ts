@@ -9,7 +9,7 @@ console.log(process.env.REACT_APP_NODE_ENV);
 
 // Configuration of Service Provider
 const customAuthArgs = {
-  baseUrl: "",
+  baseUrl: "http://localhost:3000",
   network, // based on the verifier network.
 };
 // Configuration of Modules

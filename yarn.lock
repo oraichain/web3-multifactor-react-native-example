@@ -1563,11 +1563,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@oraichain/blsdkg@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/blsdkg/-/blsdkg-1.2.11.tgz#0c94912e167b28253ced07373e5c68f0657f5b6b"
-  integrity sha512-ir70zh0hHRrBXHjpLzie84F4wwxG5zQPCu1D6IHtp7VblnA2inqWhcAbQhvidpiqpJrUdOYQJPLb7ymxBvQISw==
-
 "@oraichain/common-types@^1.2.11":
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/@oraichain/common-types/-/common-types-1.2.11.tgz#33200da9d177fe571243e1a619b3b7b5f645174e"
@@ -1581,23 +1576,8 @@
     ts-custom-error "^3.3.1"
     web3-utils "^1.8.1"
 
-"@oraichain/core@^1.2.11":
+"@oraichain/customauth@^1.2.11", "@oraichain/customauth@file:../web3-login/packages/CustomAuth":
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/core/-/core-1.2.11.tgz#6e50698cd66fbeb8f33ecc1270e6fefc6d3f0be3"
-  integrity sha512-ev8edRoDvu+zOaiPKfkhtXcaLgPvbp7UxdhuJiZ1GnRS4uA0GFI6jE5g7hMeKp8CGY0pp6KZeYXQ5FBZ4ZD5lw==
-  dependencies:
-    "@oraichain/common-types" "^1.2.11"
-    "@toruslabs/eccrypto" "^1.1.8"
-    "@toruslabs/http-helpers" "^3.2.0"
-    bn.js "^5.2.1"
-    elliptic "^6.5.4"
-    json-stable-stringify "^1.0.2"
-    web3-utils "^1.8.1"
-
-"@oraichain/customauth@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/customauth/-/customauth-1.2.11.tgz#6b56328fb88adfc4794d19cb5ceb158dcecf5781"
-  integrity sha512-/QnxXYeyT4fxlAJU1OeTK1IrDoYwlepPpU7KDo/lMAifeH4TIBa/R0+uDYjrhCgEXUjg+UZX/1kd5t8o0nLDPw==
   dependencies:
     "@chaitanyapotti/register-service-worker" "^1.7.3"
     "@oraichain/torus.js" "^1.2.11"
@@ -1612,25 +1592,8 @@
     loglevel "^1.8.1"
     web3-utils "^1.8.2"
 
-"@oraichain/default@^1.2.11":
+"@oraichain/only-social-key@file:../web3-login/packages/only-social-key":
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/default/-/default-1.2.11.tgz#cd715b0a67eabf46cd153bc96a89933aad22e888"
-  integrity sha512-iHiK7ps+drjqOL+bVbK+M7cyQ8UxuA/SYP57xtcWKgy5kbb4Mk3mOnJZ/pg+psAx9m6wvCgiNyOAZpKgMIgyrQ==
-  dependencies:
-    "@oraichain/common-types" "^1.2.11"
-    "@oraichain/core" "^1.2.11"
-    "@oraichain/security-questions" "^1.2.11"
-    "@oraichain/service-provider-base" "^1.2.11"
-    "@oraichain/service-provider-torus" "^1.2.11"
-    "@oraichain/share-serialization" "^1.2.11"
-    "@oraichain/share-transfer" "^1.2.11"
-    "@oraichain/storage-layer-torus" "^1.2.11"
-    bn.js "^5.2.1"
-
-"@oraichain/only-social-key@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/only-social-key/-/only-social-key-1.2.11.tgz#209eefd9b7bc34d2b3b0d19921b094d850dcb302"
-  integrity sha512-BIFEiUmgCLYhxVVGsmncFTQP/XWitLetyFfH+3X6O8nQ+bVTDVAy5r8AXNWS+AhlyEwuF+1QJuQoGRMtZ54waA==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@toruslabs/eccrypto" "^1.1.8"
@@ -1638,15 +1601,6 @@
     bn.js "^5.2.1"
     elliptic "^6.5.4"
     json-stable-stringify "^1.0.2"
-    web3-utils "^1.8.1"
-
-"@oraichain/security-questions@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/security-questions/-/security-questions-1.2.11.tgz#24d13540d36cbf719f82e2c3c147f41377919824"
-  integrity sha512-dDrylOwsqa/OI2qjmgeIwtkrFwIlXO+tfVL7nizlfD4uQEEB11nGaKuK+z/2sAt2CTI7ds1itDgbp68kffEJCw==
-  dependencies:
-    "@oraichain/common-types" "^1.2.11"
-    bn.js "^5.2.1"
     web3-utils "^1.8.1"
 
 "@oraichain/service-provider-base@^1.2.11":
@@ -1658,10 +1612,8 @@
     bn.js "^5.2.1"
     elliptic "^6.5.4"
 
-"@oraichain/service-provider-torus@^1.2.11":
+"@oraichain/service-provider-torus@file:../web3-login/packages/service-provider-torus":
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-torus/-/service-provider-torus-1.2.11.tgz#3bea1515e05571a3ef7c7827eac008ce56a632ce"
-  integrity sha512-+MG8egcbubgf8/LalcR7zKCOkoOlPJSqrOqpC+Rypz/06xvcAeiPVGV3G4/fGHkqWSMd8T/X5ZJRrT68NFcmUg==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@oraichain/customauth" "^1.2.11"
@@ -1670,30 +1622,8 @@
     elliptic "^6.5.4"
     keccak256 "^1.0.6"
 
-"@oraichain/share-serialization@^1.2.11":
+"@oraichain/storage-layer-torus@file:../web3-login/packages/storage-layer-torus":
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/share-serialization/-/share-serialization-1.2.11.tgz#dac94ec893ba11eb2da056edc93fcf799f81c319"
-  integrity sha512-i/y3fkxpanljcgcCxc7QFzUnckv/84RpQSU/0EB+7wRiUoSyg4TylaC2oVxQS7S969vslnLPPOPTTXmEwP7d9A==
-  dependencies:
-    "@oraichain/common-types" "^1.2.11"
-    "@types/create-hash" "1.2.2"
-    bn.js "^5.2.1"
-    create-hash "^1.2.0"
-
-"@oraichain/share-transfer@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/share-transfer/-/share-transfer-1.2.11.tgz#213b96efa14f554ebac2170b95dfc00e96a3c57a"
-  integrity sha512-L8FyeOhFrF83D3qRxC+PPwEKzGVp6Qw+3aVCYzBcUxZcot9eZQWjhagXt9uxDlLpc2IJSsI5yd9aKR/ulRV1Fg==
-  dependencies:
-    "@oraichain/common-types" "^1.2.11"
-    "@toruslabs/eccrypto" "^1.1.8"
-    "@toruslabs/http-helpers" "^3.2.0"
-    bn.js "^5.2.1"
-
-"@oraichain/storage-layer-torus@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@oraichain/storage-layer-torus/-/storage-layer-torus-1.2.11.tgz#26c1c687efdd383aad1d8855be4d280ba10cc344"
-  integrity sha512-DSCx2XjnxJ8augYPL+ZFNy2RWwYmM2KHlkwAuWu8Zso4hib8SNOuw4B0/UwFevxT+GjxyATbyPnFU/OsKfbkEg==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@toruslabs/http-helpers" "^3.2.0"
@@ -2130,13 +2060,6 @@
   integrity sha512-ojlGK1Hsfce93J0+kn3H5R73elidKUaZonirN33GSmgTUMpzI/MIFfSpF3haANe3G1bEBS9/9/QEqwTzwqFsKw==
   dependencies:
     "@babel/types" "^7.20.7"
-
-"@types/create-hash@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@types/create-hash/-/create-hash-1.2.2.tgz#e87247083df8478f6b83655592bde0d709028235"
-  integrity sha512-Fg8/kfMJObbETFU/Tn+Y0jieYewryLrbKwLCEIwPyklZZVY2qB+64KFjhplGSw+cseZosfFXctXO+PyIYD8iZQ==
-  dependencies:
-    "@types/node" "*"
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.7"
@@ -2914,7 +2837,7 @@ buffer@^4.9.1:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-buffer@^5.5.0:
+buffer@^5.4.3, buffer@^5.5.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
   integrity sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==
@@ -3885,6 +3808,11 @@ event-target-shim@^5.0.0, event-target-shim@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
+
+eventemitter3@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-5.0.1.tgz#53f5ffd0a492ac800721bb42c66b841de96423c4"
+  integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
 
 events@^3.3.0:
   version "3.3.0"
@@ -6381,7 +6309,7 @@ punycode@^1.4.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha512-jmYNElW7yvO7TV33CjSmvSiE2yco3bV2czu/OzDKdMNVZQWfxCblURLhf+47syQRBntjfLdd/H0egrzIG+oaFQ==
 
-punycode@^2.1.0:
+punycode@^2.1.0, punycode@^2.1.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
@@ -6498,6 +6426,13 @@ react-native-size-matters@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.2.tgz#4348bdd6fc47383f60326d58ad69870c998a5f9a"
   integrity sha512-DKE3f/sdcozd24oASgkP1iGg+YU3HoajRa5k3a4wkRzpiqREq8SGX12Y5zBgAt/8IivLQoTMYkyQu1/Giuy+zQ==
+
+react-native-url-polyfill@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-url-polyfill/-/react-native-url-polyfill-2.0.0.tgz#db714520a2985cff1d50ab2e66279b9f91ffd589"
+  integrity sha512-My330Do7/DvKnEvwQc0WdcBnFPploYKp9CYlefDXzIdEaA+PAhDYllkvGeEroEzvc4Kzzj2O4yVdz8v6fjRvhA==
+  dependencies:
+    whatwg-url-without-unicode "8.0.0-3"
 
 react-native-vector-icons@^10.0.0:
   version "10.0.0"
@@ -7587,10 +7522,24 @@ webidl-conversions@^3.0.0:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
   integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
 
+webidl-conversions@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-5.0.0.tgz#ae59c8a00b121543a2acc65c0434f57b0fc11aff"
+  integrity sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA==
+
 whatwg-fetch@^3.0.0:
   version "3.6.19"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.19.tgz#caefd92ae630b91c07345537e67f8354db470973"
   integrity sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==
+
+whatwg-url-without-unicode@8.0.0-3:
+  version "8.0.0-3"
+  resolved "https://registry.yarnpkg.com/whatwg-url-without-unicode/-/whatwg-url-without-unicode-8.0.0-3.tgz#ab6df4bf6caaa6c85a59f6e82c026151d4bb376b"
+  integrity sha512-HoKuzZrUlgpz35YO27XgD28uh/WJH4B0+3ttFqRo//lmq+9T/mIOJ6kqmINI9HpUpz1imRC/nR/lxKpJiv0uig==
+  dependencies:
+    buffer "^5.4.3"
+    punycode "^2.1.1"
+    webidl-conversions "^5.0.0"
 
 whatwg-url@^5.0.0:
   version "5.0.0"
