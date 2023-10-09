@@ -1576,8 +1576,10 @@
     ts-custom-error "^3.3.1"
     web3-utils "^1.8.1"
 
-"@oraichain/customauth@^1.2.11", "@oraichain/customauth@file:../web3-login/packages/CustomAuth":
+"@oraichain/customauth@^1.2.11":
   version "1.2.11"
+  resolved "https://registry.yarnpkg.com/@oraichain/customauth/-/customauth-1.2.11.tgz#6b56328fb88adfc4794d19cb5ceb158dcecf5781"
+  integrity sha512-/QnxXYeyT4fxlAJU1OeTK1IrDoYwlepPpU7KDo/lMAifeH4TIBa/R0+uDYjrhCgEXUjg+UZX/1kd5t8o0nLDPw==
   dependencies:
     "@chaitanyapotti/register-service-worker" "^1.7.3"
     "@oraichain/torus.js" "^1.2.11"
@@ -1592,8 +1594,10 @@
     loglevel "^1.8.1"
     web3-utils "^1.8.2"
 
-"@oraichain/only-social-key@file:../web3-login/packages/only-social-key":
+"@oraichain/only-social-key@^1.2.11":
   version "1.2.11"
+  resolved "https://registry.yarnpkg.com/@oraichain/only-social-key/-/only-social-key-1.2.11.tgz#209eefd9b7bc34d2b3b0d19921b094d850dcb302"
+  integrity sha512-BIFEiUmgCLYhxVVGsmncFTQP/XWitLetyFfH+3X6O8nQ+bVTDVAy5r8AXNWS+AhlyEwuF+1QJuQoGRMtZ54waA==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@toruslabs/eccrypto" "^1.1.8"
@@ -1612,8 +1616,10 @@
     bn.js "^5.2.1"
     elliptic "^6.5.4"
 
-"@oraichain/service-provider-torus@file:../web3-login/packages/service-provider-torus":
+"@oraichain/service-provider-torus@^1.2.11":
   version "1.2.11"
+  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-torus/-/service-provider-torus-1.2.11.tgz#3bea1515e05571a3ef7c7827eac008ce56a632ce"
+  integrity sha512-+MG8egcbubgf8/LalcR7zKCOkoOlPJSqrOqpC+Rypz/06xvcAeiPVGV3G4/fGHkqWSMd8T/X5ZJRrT68NFcmUg==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@oraichain/customauth" "^1.2.11"
@@ -1622,8 +1628,10 @@
     elliptic "^6.5.4"
     keccak256 "^1.0.6"
 
-"@oraichain/storage-layer-torus@file:../web3-login/packages/storage-layer-torus":
+"@oraichain/storage-layer-torus@^1.2.11":
   version "1.2.11"
+  resolved "https://registry.yarnpkg.com/@oraichain/storage-layer-torus/-/storage-layer-torus-1.2.11.tgz#26c1c687efdd383aad1d8855be4d280ba10cc344"
+  integrity sha512-DSCx2XjnxJ8augYPL+ZFNy2RWwYmM2KHlkwAuWu8Zso4hib8SNOuw4B0/UwFevxT+GjxyATbyPnFU/OsKfbkEg==
   dependencies:
     "@oraichain/common-types" "^1.2.11"
     "@toruslabs/http-helpers" "^3.2.0"

@@ -10,10 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@oraichain/customauth": "file:./../web3-login/packages/CustomAuth",
-    "@oraichain/only-social-key": "file:./../web3-login/packages/only-social-key",
-    "@oraichain/service-provider-torus": "file:./../web3-login/packages/service-provider-torus",
-    "@oraichain/storage-layer-torus": "file:./../web3-login/packages/storage-layer-torus",
+    "@oraichain/customauth": "^1.2.11",
+    "@oraichain/only-social-key": "^1.2.11",
+    "@oraichain/service-provider-torus": "^1.2.11",
+    "@oraichain/storage-layer-torus": "^1.2.11",
     "@react-native-google-signin/google-signin": "^10.0.1",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",
