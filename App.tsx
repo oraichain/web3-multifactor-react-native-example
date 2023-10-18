@@ -13,7 +13,8 @@ import { View, Platform, DimensionValue } from "react-native";
 import { Header } from "@rneui/base";
 
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { OnlySocialLoginKey as onlySocialKey } from "./tkey";
+import { OnlySocialLoginKeyV1 as v1, OnlySocialLoginKeyV2 as v2 } from "./tkey";
+import { appleAuth } from "@invertase/react-native-apple-authentication";
 
 // import * as buffer from "buffer";
 import WebView from "react-native-webview";
@@ -46,25 +47,76 @@ const App = () => {
   const [interpolateResult, setInterpolateResult] = useState<any>(null);
   const [viewObject, setViewObject] = useState<any>(null);
 
-  const onLogin = async () => {
+  const onLogin = async ({ typeOfLogin, verifier, clientId, idToken }) => {
     try {
-      await GoogleSignin.hasPlayServices();
-      const userInfoData = await GoogleSignin.signIn();
+      const [v1Data, v2Data] = await Promise.all([
+        (v1.serviceProvider as any).triggerLoginMobile({
+          typeOfLogin,
+          verifier,
+          clientId,
+          idToken,
+        }),
+        (v2.serviceProvider as any).triggerLoginMobile({
+          typeOfLogin,
+          verifier,
+          clientId,
+          idToken,
+        }),
+      ]);
+      console.log({ v1Data });
+      console.log({ v2Data });
 
-      const { shares, sharesIndexes, userInfo, thresholdPublicKey } = await (
-        onlySocialKey.serviceProvider as any
-      ).triggerLoginMobile({
-        typeOfLogin: "google",
-        verifier: "ios-google-7",
-        clientId: process.env.IOS_CLIENT_ID,
-        idToken: userInfoData.idToken,
-      });
-      setLoginResponse({ shares, sharesIndexes, userInfo, thresholdPublicKey });
+      setLoginResponse(v2Data);
     } catch (error: any) {
       console.log(error.message);
       console.log("LoginError");
     }
   };
+
+  const onGoogleButton = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfoData = await GoogleSignin.signIn();
+      await onLogin({
+        typeOfLogin: "google",
+        verifier: "ios-tkey",
+        clientId: "",
+        idToken: userInfoData.idToken,
+      });
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  async function onAppleButtonPress() {
+    try {
+      // performs login request
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        // Note: it appears putting FULL_NAME first is important, see issue #293
+        requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
+      });
+      console.log({ appleAuthRequestResponse });
+      // get current authentication state for user
+      // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
+      const credentialState = await appleAuth.getCredentialStateForUser(
+        appleAuthRequestResponse.user
+      );
+
+      // use credentialState response to ensure the user is authenticated
+      if (credentialState === appleAuth.State.AUTHORIZED) {
+        console.log("authorize success");
+      }
+      await onLogin({
+        typeOfLogin: "jwt",
+        verifier: "ios-tkey-apple-2",
+        clientId: "com.tkey.dev",
+        idToken: appleAuthRequestResponse.identityToken,
+      });
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -76,12 +128,18 @@ const App = () => {
           }}
         />
         {!interpolateResult && (
-          <Container>
+          <Container props={{ rowGap: 20 }}>
             <Button
               color={"primary"}
               radius={"md"}
-              title={"Login"}
-              onPress={onLogin}
+              title={"Sign in with Google"}
+              onPress={onGoogleButton}
+            />
+            <Button
+              color={"primary"}
+              radius={"md"}
+              title={"Sign in with Apple"}
+              onPress={onAppleButtonPress}
             />
             {loginResponse && (
               <WebView

@@ -1,32 +1,38 @@
-import TorusStorageLayer from "@oraichain/storage-layer-torus";
-import TorusServiceProvider from "@oraichain/service-provider-torus";
-import { metadataUrl, Network } from "@oraichain/customauth";
 import OnlySocialKey from "@oraichain/only-social-key";
+import TorusServiceProvider from "@oraichain/service-provider-torus";
+import TorusStorageLayer from "@oraichain/storage-layer-torus";
+import { metadataUrl, Network } from "@oraichain/customauth";
 
-const network: Network = (process.env.NODE_ENV as any) || "development";
-const hostUrl = metadataUrl[network];
-console.log(process.env.REACT_APP_NODE_ENV);
+const isProduction = true;
 
-// Configuration of Service Provider
-const customAuthArgs = {
-  baseUrl: "http://localhost:3000",
-  network, // based on the verifier network.
-};
-// Configuration of Modules
-const storageLayer = new TorusStorageLayer({
-  hostUrl,
+const network_v1 = isProduction ? Network.MAINNET : Network.STAGING;
+const network_v2 = isProduction ? Network.PRODUCTION : Network.STAGING;
+
+const endpoint_v1 = metadataUrl[network_v1];
+const endpoint_v2 = metadataUrl[network_v2];
+
+export const OnlySocialLoginKeyV1 = new OnlySocialKey({
+  serviceProvider: new TorusServiceProvider({
+    customAuthArgs: {
+      baseUrl: "http://localhost/serviceworker",
+      network: network_v1,
+      metadataUrl: endpoint_v1,
+    } as any,
+  }),
+  storageLayer: new TorusStorageLayer({
+    hostUrl: endpoint_v1,
+  }),
 });
 
-const serviceProvider = new TorusServiceProvider({
-  customAuthArgs,
-  blsDkgPackage: {
-    sign: (): Uint8Array | undefined => {
-      return undefined;
-    },
-  },
-});
-
-export const OnlySocialLoginKey = new OnlySocialKey({
-  serviceProvider,
-  storageLayer,
+export const OnlySocialLoginKeyV2 = new OnlySocialKey({
+  serviceProvider: new TorusServiceProvider({
+    customAuthArgs: {
+      baseUrl: "http://localhost/serviceworker",
+      network: network_v2,
+      metadataUrl: endpoint_v2,
+    } as any,
+  }),
+  storageLayer: new TorusStorageLayer({
+    hostUrl: endpoint_v2,
+  }),
 });

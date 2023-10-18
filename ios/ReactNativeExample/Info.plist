@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GIDClientID</key>
-	<string>88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k.apps.googleusercontent.com</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-  	<dict>
-    	<key>CFBundleURLSchemes</key>
-    	<array>
-      	<string>com.googleusercontent.apps.88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k</string>
-    	</array>
-  	</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -31,8 +20,19 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>GIDClientID</key>
+	<string>88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
