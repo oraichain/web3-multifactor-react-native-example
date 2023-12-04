@@ -1568,12 +1568,12 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@oraichain/common-types@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/common-types/-/common-types-1.2.17.tgz#38a3f8708bd14b3846640389d9f6cd28fac11738"
-  integrity sha512-gOOZgsrnEmRv1G/lkTSluV2ukPR72lEs1dbgGq4OmLsjkN+BO9v/WkxymUvltYKUTq7vAoBNVUhh1dRVxC/ffQ==
+"@oraichain/common-types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/common-types/-/common-types-2.0.0.tgz#3f2b0cfc061ae33888718e17173b166d955563a1"
+  integrity sha512-opYhp8zJnvtM+rNhO/aXQiW9GNJRvCiSaoF0XI5jnTyANV5FvaktBsPEHT1+1zx14LVBNtnw0yb0yEhUMO8MNg==
   dependencies:
-    "@oraichain/customauth" "^1.2.17"
+    "@oraichain/customauth" "^2.0.0"
     "@toruslabs/eccrypto" "^1.1.8"
     bn.js "^5.2.1"
     elliptic "^6.5.4"
@@ -1581,13 +1581,13 @@
     ts-custom-error "^3.3.1"
     web3-utils "^1.8.1"
 
-"@oraichain/customauth@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/customauth/-/customauth-1.2.17.tgz#203e2a5d641b3ce5239642776e3d0e977c5059ca"
-  integrity sha512-68NeBypP3XCf/+LlzoXsUjfyaaztIh2Cwtivrs04JatSrYjhHGCjCG+yflY587Jtpx6xgykAcOIJCQZ8q0C+Bg==
+"@oraichain/customauth@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/customauth/-/customauth-2.0.0.tgz#13e89d5af96b175bd4b7fbe78889565dac7014fb"
+  integrity sha512-uuoLwmHgBh/wd/vPmSO9IhhPGml0jnTFh58UKbQ0goSMJSe3m/ClCc6wQIwsNoQA45NUZ5l68h/yNQvOyDQwNQ==
   dependencies:
     "@chaitanyapotti/register-service-worker" "^1.7.3"
-    "@oraichain/torus.js" "^1.2.17"
+    "@oraichain/multifactors.js" "^2.0.0"
     "@toruslabs/broadcast-channel" "^6.2.0"
     "@toruslabs/eccrypto" "^2.0.0"
     "@toruslabs/http-helpers" "^3.3.0"
@@ -1597,57 +1597,13 @@
     jwt-decode "^3.1.2"
     lodash.merge "^4.6.2"
     loglevel "^1.8.1"
+    serialize-error "^8.1.0"
     web3-utils "^1.8.2"
 
-"@oraichain/only-social-key@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/only-social-key/-/only-social-key-1.2.17.tgz#29c6828e9bf999c2ebfa3a970c497a9d3b6ff176"
-  integrity sha512-EDdFiam/ZenbaLppdJ51lXhEPPAWkc0ivPZcvxRBK6lnmoNeiefgTJD6Rf6wSFpITgYyqcRVhKyujOMD3R1N+g==
-  dependencies:
-    "@oraichain/common-types" "^1.2.17"
-    "@toruslabs/eccrypto" "^1.1.8"
-    "@toruslabs/http-helpers" "^3.2.0"
-    bn.js "^5.2.1"
-    elliptic "^6.5.4"
-    json-stable-stringify "^1.0.2"
-    web3-utils "^1.8.1"
-
-"@oraichain/service-provider-base@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-base/-/service-provider-base-1.2.17.tgz#780b12f8c55058027094105aae7588043bc20ac8"
-  integrity sha512-tJHqTjQPCwc+KBjrOrzI+0j7eTGPG2gEzGbX1uyxwzDxvyLU57CMtVqQA2wmhHitm4lBCNfjmJ4+Ee+rfTusbQ==
-  dependencies:
-    "@oraichain/common-types" "^1.2.17"
-    bn.js "^5.2.1"
-    elliptic "^6.5.4"
-
-"@oraichain/service-provider-torus@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-torus/-/service-provider-torus-1.2.17.tgz#324da68796f6ce5ad7d15180898b0cb8e844f317"
-  integrity sha512-pKfBKHCKz01vXiSkK6j7aZL+KRJK7GkTIDIrSVZHmDxJr6OBk155YWnoRFNkRublNFRPtMs2IDcXisK8lReodg==
-  dependencies:
-    "@oraichain/common-types" "^1.2.17"
-    "@oraichain/customauth" "^1.2.17"
-    "@oraichain/service-provider-base" "^1.2.17"
-    bn.js "^5.2.1"
-    elliptic "^6.5.4"
-    web3-utils "^1.8.2"
-
-"@oraichain/storage-layer-torus@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/storage-layer-torus/-/storage-layer-torus-1.2.17.tgz#c33a007fc3456a4a1155c1e13f74a995e113080b"
-  integrity sha512-GEM2RXQhX2pq+2uySIjmIITJc1PQHasXSko3cDuFSj3YB1xxHSFx0jFWGlYdvegWTX/xqaDf+7sYGj/ZEEpt0w==
-  dependencies:
-    "@oraichain/common-types" "^1.2.17"
-    "@toruslabs/http-helpers" "^3.2.0"
-    bn.js "^5.2.1"
-    json-stable-stringify "^1.0.2"
-    web3-utils "^1.8.1"
-
-"@oraichain/torus.js@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@oraichain/torus.js/-/torus.js-1.2.17.tgz#8a4d3227ce6f71b579cb094ed8e1a70439249d32"
-  integrity sha512-4RkU4p6A6mR635mZTsC9PooI18HxG27qWmrfUswFw/cA8ZaZ7B2nkekQtZ8JUA4aqcg5/0T/gBIMs/BkAeZifA==
+"@oraichain/multifactors.js@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/multifactors.js/-/multifactors.js-2.0.0.tgz#cb3851e4f795db1e3530cfb102a8aa81e78f6bb5"
+  integrity sha512-fbNq3oiGhi8VJD25JvYX6o9sTymCwkVZYp/Gv49xeLzUrcok+PQjiNwqPdkTCncc5LPECz/FF4xzw3EoBR9/1A==
   dependencies:
     "@toruslabs/eccrypto" "^2.0.0"
     "@toruslabs/http-helpers" "^3.3.0"
@@ -1657,6 +1613,51 @@
     keccak "^3.0.3"
     loglevel "^1.8.1"
     web3-utils "^1.8.2"
+
+"@oraichain/only-social-key@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/only-social-key/-/only-social-key-2.0.0.tgz#3edf337f686583bfd356bde8a86a69f294669ca3"
+  integrity sha512-/bYt/VSiNwiyHDklDgceNwtitocvTeXPQBC1NGUcVPmZMkqselPPb2zw+vSMlraPNWnRVQRY2V6621WHohpzUg==
+  dependencies:
+    "@oraichain/common-types" "^2.0.0"
+    "@toruslabs/eccrypto" "^1.1.8"
+    "@toruslabs/http-helpers" "^3.2.0"
+    bn.js "^5.2.1"
+    elliptic "^6.5.4"
+    json-stable-stringify "^1.0.2"
+    web3-utils "^1.8.1"
+
+"@oraichain/service-provider-base@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-base/-/service-provider-base-2.0.0.tgz#8300f583d6f8d33d7c397434443bbd547d4107f5"
+  integrity sha512-q69zwXDvL77YUsfjPeWbyYEOZFDlUekrZpjeuT9O5ZB6hcNZDqcurkZMun5xWTqec5sTisxKwCcNAHtMpeOVmg==
+  dependencies:
+    "@oraichain/common-types" "^2.0.0"
+    bn.js "^5.2.1"
+    elliptic "^6.5.4"
+
+"@oraichain/service-provider-orai@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/service-provider-orai/-/service-provider-orai-2.0.0.tgz#cc7f200b6b6b0d8ccbb375640967c5fd714822c8"
+  integrity sha512-0zuZ+WzbjYUmf3ObIep0kCDrwcv+zCqzti3Syr6vn8bGXzMRcSqgxgpXvh1E0dvil4Bwyz/VjQaoJf8pyMwE3g==
+  dependencies:
+    "@oraichain/common-types" "^2.0.0"
+    "@oraichain/customauth" "^2.0.0"
+    "@oraichain/service-provider-base" "^2.0.0"
+    bn.js "^5.2.1"
+    elliptic "^6.5.4"
+    web3-utils "^1.8.2"
+
+"@oraichain/storage-layer-orai@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@oraichain/storage-layer-orai/-/storage-layer-orai-2.0.0.tgz#1227c322b4feff0ac3f8db3ca66317882f42d095"
+  integrity sha512-Lq5NjF2JP4JgDxxFY4GD3a2xn91DGfy746fHqMGTsajH8ZNVJHlGOt+iGoIjiZoTXcYntIYfzEp7cXYNzk78WA==
+  dependencies:
+    "@oraichain/common-types" "^2.0.0"
+    "@toruslabs/http-helpers" "^3.2.0"
+    bn.js "^5.2.1"
+    json-stable-stringify "^1.0.2"
+    web3-utils "^1.8.1"
 
 "@react-native-community/cli-clean@11.3.7":
   version "11.3.7"

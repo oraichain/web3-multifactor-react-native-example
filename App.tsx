@@ -13,17 +13,12 @@ import { View, Platform, DimensionValue } from "react-native";
 import { Header } from "@rneui/base";
 
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { OnlySocialLoginKeyV1 as v1, OnlySocialLoginKeyV2 as v2 } from "./tkey";
 import { appleAuth } from "@invertase/react-native-apple-authentication";
 
 // import * as buffer from "buffer";
 import WebView from "react-native-webview";
+// @ts-ignore
 import html from "./asset/interpolate.html";
-
-// if (typeof Buffer === "undefined") {
-//   global.Buffer = buffer.Buffer;
-// }
-// global.window.addEventListener = (x) => x;
 
 GoogleSignin.configure({
   iosClientId: process.env.IOS_CLIENT_ID,
@@ -47,16 +42,20 @@ const App = () => {
   const [interpolateResult, setInterpolateResult] = useState<any>(null);
   const [viewObject, setViewObject] = useState<any>(null);
 
-  const onLogin = async ({ typeOfLogin, verifier, clientId, idToken }) => {
+  const onLogin = async ({
+    typeOfLogin,
+    verifier,
+    clientId,
+    idToken,
+  }: {
+    typeOfLogin: string;
+    verifier: string;
+    clientId: string;
+    idToken: string;
+  }) => {
     try {
-      const [v1Data, v2Data] = await Promise.all([
-        (v1.serviceProvider as any).triggerLoginMobile({
-          typeOfLogin,
-          verifier,
-          clientId,
-          idToken,
-        }),
-        (v2.serviceProvider as any).triggerLoginMobile({
+      const [v1Data] = await Promise.all([
+        (onlySocialKey.serviceProvider as any).triggerLoginMobile({
           typeOfLogin,
           verifier,
           clientId,
@@ -64,9 +63,8 @@ const App = () => {
         }),
       ]);
       console.log({ v1Data });
-      console.log({ v2Data });
 
-      setLoginResponse(v2Data);
+      setLoginResponse(v1Data);
     } catch (error: any) {
       console.log(error.message);
       console.log("LoginError");
@@ -77,12 +75,15 @@ const App = () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfoData = await GoogleSignin.signIn();
-      await onLogin({
-        typeOfLogin: "google",
-        verifier: "ios-tkey",
-        clientId: "",
-        idToken: userInfoData.idToken,
-      });
+      if (userInfoData.idToken) {
+        await onLogin({
+          typeOfLogin: "google",
+          verifier: "ios-tkey",
+          clientId:
+            "88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k.apps.googleusercontent.com",
+          idToken: userInfoData.idToken,
+        });
+      }
     } catch (error: any) {
       console.log(error.message);
     }
@@ -107,12 +108,14 @@ const App = () => {
       if (credentialState === appleAuth.State.AUTHORIZED) {
         console.log("authorize success");
       }
-      await onLogin({
-        typeOfLogin: "jwt",
-        verifier: "ios-tkey-apple-2",
-        clientId: "com.tkey.dev",
-        idToken: appleAuthRequestResponse.identityToken,
-      });
+      if (appleAuthRequestResponse.identityToken) {
+        await onLogin({
+          typeOfLogin: "jwt",
+          verifier: "ios-tkey-apple-2",
+          clientId: "com.tkey.dev",
+          idToken: appleAuthRequestResponse.identityToken,
+        });
+      }
     } catch (err: any) {
       console.log(err.message);
     }
@@ -152,15 +155,15 @@ const App = () => {
                 javaScriptEnabled={true}
                 injectedJavaScript={`
           window.shares = '${JSON.stringify(
-                  loginResponse.shares
-                    .slice(0, 3)
-                    .map((share: any) => share.toString("hex"))
-                )}';
+            loginResponse.shares
+              .slice(0, 3)
+              .map((share: any) => share.toString("hex"))
+          )}';
           window.indexes = '${JSON.stringify(
-                  loginResponse.sharesIndexes
-                    .slice(0, 3)
-                    .map((index: any) => index.toString("hex"))
-                )}';
+            loginResponse.sharesIndexes
+              .slice(0, 3)
+              .map((index: any) => index.toString("hex"))
+          )}';
         `}
                 onMessage={async (event) => {
                   console.log(

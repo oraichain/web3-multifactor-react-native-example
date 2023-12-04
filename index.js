@@ -3,6 +3,7 @@
  */
 import "./shim";
 import "react-native-url-polyfill/auto";
+import "./okey";
 
 import { AppRegistry } from "react-native";
 import App from "./App";
