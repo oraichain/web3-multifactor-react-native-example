@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="module">
+    import init, {interpolate, get_pk} from 'https://unpkg.com/@oraichain/blsdkg@1.1.5/blsdkg.js';
+    const fromHexString = (hexString) =>
+      Uint8Array.from(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)));
+
+    const toHexString = (bytes) => bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
+
+    init().then(() => {
+      try {
+        let shares = JSON.parse(window.shares);
+        shares = shares.map((share) => fromHexString(share));
+        let indexes = JSON.parse(window.indexes);
+        indexes = indexes.map((index) => fromHexString(index));
+        const privKey = interpolate(indexes, shares);
+        const pubKey = get_pk(privKey);
+        const result = {
+          privKey: toHexString(privKey),
+          pubKey: toHexString(pubKey)
+        };
+        window.ReactNativeWebView.postMessage(JSON.stringify({result}));
+      } catch (error) {
+        window.ReactNativeWebView.postMessage(JSON.stringify({error: error.message}));
+      }
+    });
+  </script>
+</head>
+
+</html>

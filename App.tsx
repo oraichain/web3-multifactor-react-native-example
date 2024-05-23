@@ -15,9 +15,10 @@ import WebView from 'react-native-webview';
 import html from './asset/interpolate.html';
 import OraiServiceProvider from '@oraichain/service-provider-orai';
 import { LOGIN_TYPE } from '@oraichain/customauth';
-
+console.log(process.env.ANDROID_CLIENT_ID);
 GoogleSignin.configure({
-  iosClientId: process.env.IOS_CLIENT_ID
+  iosClientId: process.env.IOS_CLIENT_ID,
+  webClientId: process.env.ANDROID_CLIENT_ID
 });
 
 const theme = createTheme({
@@ -40,6 +41,8 @@ const App = () => {
 
   const onLogin = async ({ typeOfLogin, verifier, clientId, idToken }: { typeOfLogin: LOGIN_TYPE; verifier: string; clientId: string; idToken: string }) => {
     try {
+      const start = Date.now();
+      console.log('triggerLoginMobile 1:', Date.now());
       const [v1Data] = await Promise.all([
         (onlySocialKey.serviceProvider as OraiServiceProvider).triggerLoginMobile({
           typeOfLogin,
@@ -48,6 +51,7 @@ const App = () => {
           idToken
         })
       ]);
+      console.log('triggerLoginMobile 2:', Date.now());
       console.log({ v1Data });
 
       setLoginResponse(v1Data);
@@ -64,8 +68,8 @@ const App = () => {
       if (userInfoData.idToken) {
         await onLogin({
           typeOfLogin: 'google',
-          verifier: 'ios-tkey',
-          clientId: '88022207528-b4i9ai34taasskcb9jokj8j6gigmta8k.apps.googleusercontent.com',
+          verifier: 'tkey-google-staging',
+          clientId: process.env.ANDROID_CLIENT_ID,
           idToken: userInfoData.idToken
         });
       }
@@ -134,6 +138,7 @@ const App = () => {
                     setLoginResponse(null);
                     return console.log('🚀 ~ file: index.tsx:131 ~ error:', error);
                   }
+                  console.log('triggerLoginMobile 3:', Date.now());
                   setInterpolateResult(result);
                 }}
               />

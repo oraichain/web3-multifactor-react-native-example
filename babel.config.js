@@ -11,7 +11,7 @@ module.exports = {
       "module-resolver",
       {
         alias: {
-          "bn.js": "react-native-bignumber",
+          // "bn.js": "react-native-bignumber",
         },
       },
     ],
