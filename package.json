@@ -10,12 +10,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@bitgo/bls-dkg": "^1.3.1",
     "@invertase/react-native-apple-authentication": "^2.2.2",
+    "@noble/bls12-381": "^1.4.0",
+    "@noble/curves": "^1.4.0",
     "@oraichain/customauth": "next",
+    "@oraichain/multifactors.js": "next",
     "@oraichain/only-social-key": "next",
     "@oraichain/service-provider-orai": "next",
     "@oraichain/storage-layer-orai": "next",
-    "@oraichain/multifactors.js": "next",
     "@react-native-google-signin/google-signin": "^10.0.1",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",

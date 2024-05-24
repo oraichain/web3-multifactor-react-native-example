@@ -3,11 +3,12 @@ import React from 'react';
 import type { PropsWithChildren } from 'react';
 
 import { ThemeProvider, createTheme, Button, makeStyles, Text } from '@rneui/themed';
-import { View, Platform, DimensionValue } from 'react-native';
+import { View, Platform, DimensionValue, NativeModules } from 'react-native';
 import { Header } from '@rneui/base';
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { appleAuth } from '@invertase/react-native-apple-authentication';
+// import { interpolate } from './bls';
 
 // import * as buffer from "buffer";
 import WebView from 'react-native-webview';
@@ -15,6 +16,7 @@ import WebView from 'react-native-webview';
 import html from './asset/interpolate.html';
 import OraiServiceProvider from '@oraichain/service-provider-orai';
 import { LOGIN_TYPE } from '@oraichain/customauth';
+import { getPairFromSharesAndIndexes } from './bls';
 console.log(process.env.ANDROID_CLIENT_ID);
 GoogleSignin.configure({
   iosClientId: process.env.IOS_CLIENT_ID,
@@ -53,8 +55,17 @@ const App = () => {
       ]);
       console.log('triggerLoginMobile 2:', Date.now());
       console.log({ v1Data });
-
+      const shares = v1Data.shares.map((share: any) => share.toString('hex'));
+      const indexes = v1Data.sharesIndexes.map((index: any) => index.toString('hex'));
+      // const toHexString = (bytes) => bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
+      // const result = interpolate(shareAndIndexes.slice(0,3), 0n).toString(16)
+      // console.log({result});
+      // console.log(toHexString(Buffer.from(result,'hex')));
+      const shareAndIndexes:[bigint,bigint][] = shares.slice(0, 3).map((share, index) => 
+        [BigInt(parseInt(indexes[index], 16)), BigInt("0x" + share)]);
+      console.log(getPairFromSharesAndIndexes(shareAndIndexes));
       setLoginResponse(v1Data);
+      setInterpolateResult(getPairFromSharesAndIndexes(shareAndIndexes));
     } catch (error: any) {
       console.log(error.message);
       console.log('LoginError');
@@ -121,7 +132,7 @@ const App = () => {
           <Container props={{ rowGap: 20 }}>
             <Button color={'primary'} radius={'md'} title={'Sign in with Google'} onPress={onGoogleButton} />
             <Button color={'primary'} radius={'md'} title={'Sign in with Apple'} onPress={onAppleButtonPress} />
-            {loginResponse && (
+            {/* {loginResponse && (
               <WebView
                 originWhitelist={['*']}
                 source={isAndroid ? { uri: 'file:///android_asset/interpolate.html' } : html}
@@ -139,10 +150,11 @@ const App = () => {
                     return console.log('🚀 ~ file: index.tsx:131 ~ error:', error);
                   }
                   console.log('triggerLoginMobile 3:', Date.now());
+                  console.log(result);
                   setInterpolateResult(result);
                 }}
               />
-            )}
+            )} */}
           </Container>
         )}
         {interpolateResult && (
@@ -150,6 +162,7 @@ const App = () => {
             <Button onPress={() => setViewObject(interpolateResult.privKey)} title={'Private key'} />
             <Button title={'Address'} onPress={() => setViewObject(interpolateResult.pubKey)} />
             <Button title={'User info'} onPress={() => setViewObject(loginResponse.userInfo)} />
+            <Button title={'Log out'} onPress={async() => GoogleSignin.signOut()} />
             <Text style={{ marginTop: 20 }}>{JSON.stringify(viewObject)}</Text>
           </Container>
         )}
